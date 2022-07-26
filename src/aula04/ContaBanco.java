@@ -8,9 +8,8 @@ public class ContaBanco {
     private double saldo;
     private boolean status;
 
+
     //Métodos Especiais
-
-
     public ContaBanco() {
         this.setSaldo(0);
         this.setStatus(false);
@@ -56,6 +55,7 @@ public class ContaBanco {
         this.status = status;
     }
 
+
     //Métodos Personalizados
     public void estadoAtual(){
         System.out.println("________________________________");
@@ -67,7 +67,7 @@ public class ContaBanco {
         if (isStatus()){
             System.out.println("Conta Aberta");
         } else {
-            System.out.println("Conta Encerrada");
+            System.out.println("Conta Fechada");
         }
         System.out.println("________________________________");
     }
@@ -97,7 +97,7 @@ public class ContaBanco {
     public void depositar(double v){
         if (this.isStatus()){
             this.setSaldo(this.getSaldo() + v);
-            System.out.println("Depósito realizado na conta de: " + this.getDono());
+            System.out.println("Depósito realizado de " + v + " na conta de: " + this.getDono());
         } else {
             System.out.println("Depósito não realizado, conta está encerrada");
         }
