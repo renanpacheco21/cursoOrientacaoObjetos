@@ -62,7 +62,7 @@ public class ContaBanco {
         System.out.println("Conta: " + this.getNumConta());
         System.out.println("Tipo: " + this.getTipo());
         System.out.println("Responsável: " + this.getDono());
-        System.out.println("Saldo: R$ " + Math.round(getSaldo()*100.0)/100.0);
+        System.out.println("Saldo: R$ " + (Math.round(getSaldo()*100.0)/100.0));
 
         if (isStatus()){
             System.out.println("Conta Aberta");
@@ -85,7 +85,7 @@ public class ContaBanco {
 
     public void fecharConta(){
         if (this.getSaldo() > 0) {
-            System.out.println("A conta não pode ser encerrada, possui saldo superior a 0,00 \n >>");
+            System.out.println("A conta não pode ser encerrada. O saldo " + (Math.round(getSaldo()*100.0)/100.0) + " deverá ser sacado \n >>");
         } else if (this.getSaldo() < 0) {
             System.out.println("A conta não pode ser encerrada, possuí débitos pendentes \n >>");
         } else {
@@ -109,7 +109,7 @@ public class ContaBanco {
                 this.setSaldo(this.getSaldo() - v);
                 System.out.println("Saque realizado de " + v + " na conta de: " + this.getDono() + "\n >>");
             } else {
-                System.out.println("Saldo insuficiente para saque. Valor disponível: " + this.getSaldo() + "\n >>");
+                System.out.println("Saldo insuficiente para saque. Valor disponível: " + (Math.round(getSaldo()*100.0)/100.0) + "\n >>");
             }
         } else {
             System.out.println("Saque não realizado, conta está encerrada \n >>");
@@ -127,8 +127,7 @@ public class ContaBanco {
             this.setSaldo(this.getSaldo() - v);
             System.out.println("Mensalidade paga com sucesso " + this.getDono() + "\n >>");
         } else {
-            System.out.println("Pagamento não realizado, conta está encerrada \n >>");
+            System.out.println("Pagamento não realizado. A conta " + this.getNumConta() + " está encerrada \n >>");
         }
     }
-
 }
