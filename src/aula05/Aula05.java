@@ -10,9 +10,11 @@ public class Aula05 {
         c.maisVolume();
         c.maisVolume();
         c.pause();
-        c.ligarMudo();
+        //c.ligarMudo();
+        c.desligar();
         c.abrirMenu();
         c.fecharMenu();
+
 
     }
 }
