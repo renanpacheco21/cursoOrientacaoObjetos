@@ -1,5 +1,5 @@
 package aula04;
-public class Aula05 {
+public class Aula04 {
 
     public static void main(String[] args) {
         ContaBanco p1 = new ContaBanco();
