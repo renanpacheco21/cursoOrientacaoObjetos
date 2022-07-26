@@ -62,7 +62,7 @@ public class ContaBanco {
         System.out.println("Conta: " + this.getNumConta());
         System.out.println("Tipo: " + this.getTipo());
         System.out.println("Responsável: " + this.getDono());
-        System.out.println("Saldo: R$ " + this.getSaldo());
+        System.out.println("Saldo: R$ " + Math.round(getSaldo()*100.0)/100.0);
 
         if (isStatus()){
             System.out.println("Conta Aberta");
@@ -80,26 +80,26 @@ public class ContaBanco {
         } else if (t == "CP"){
             this.setSaldo(150);
         }
-        System.out.println("Conta aberta com sucesso");
+        System.out.println("Conta aberta com sucesso: " + this.getNumConta() + " - " + this.getDono() + "\n >>");
     }
 
     public void fecharConta(){
         if (this.getSaldo() > 0) {
-            System.out.println("A conta não pode ser encerrada, possui saldo superior a 0,00");
+            System.out.println("A conta não pode ser encerrada, possui saldo superior a 0,00 \n >>");
         } else if (this.getSaldo() < 0) {
-            System.out.println("A conta não pode ser encerrada, possuí débitos pendentes");
+            System.out.println("A conta não pode ser encerrada, possuí débitos pendentes \n >>");
         } else {
             this.setStatus(false);
-            System.out.println("A conta foi encerrada com sucesso");
+            System.out.println("A conta " + this.getNumConta() + " foi encerrada com sucesso \n >>");
         }
     }
 
     public void depositar(double v){
         if (this.isStatus()){
             this.setSaldo(this.getSaldo() + v);
-            System.out.println("Depósito realizado de " + v + " na conta de: " + this.getDono());
+            System.out.println("Depósito realizado de " + v + " na conta de: " + this.getDono() + "\n >>");
         } else {
-            System.out.println("Depósito não realizado, conta está encerrada");
+            System.out.println("Depósito não realizado, conta está encerrada \n >>");
         }
     }
 
@@ -107,12 +107,12 @@ public class ContaBanco {
         if (this.isStatus()){
             if (this.getSaldo() >= v) {
                 this.setSaldo(this.getSaldo() - v);
-                System.out.println("Saque realizado na conta de: " + this.getDono());
+                System.out.println("Saque realizado de " + v + " na conta de: " + this.getDono() + "\n >>");
             } else {
-                System.out.println("Saldo insuficiente para saque");
+                System.out.println("Saldo insuficiente para saque. Valor disponível: " + this.getSaldo() + "\n >>");
             }
         } else {
-            System.out.println("Saque não realizado, conta está encerrada");
+            System.out.println("Saque não realizado, conta está encerrada \n >>");
         }
     }
 
@@ -125,9 +125,9 @@ public class ContaBanco {
         }
         if (this.isStatus()){
             this.setSaldo(this.getSaldo() - v);
-            System.out.println("Mensalidade paga com sucesso " + this.getDono());
+            System.out.println("Mensalidade paga com sucesso " + this.getDono() + "\n >>");
         } else {
-            System.out.println("Pagamento não realizado, conta está encerrada");
+            System.out.println("Pagamento não realizado, conta está encerrada \n >>");
         }
     }
 

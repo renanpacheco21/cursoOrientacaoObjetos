@@ -16,6 +16,11 @@ public class Aula05 {
         p1.depositar(100);
         p2.depositar(500);
 
+        p2.sacar(120.55);
+        p2.pagarMensalidade();
+
+        p1.sacar(p1.getSaldo());
+        p1.fecharConta();
 
         p1.estadoAtual();
         p2.estadoAtual();
