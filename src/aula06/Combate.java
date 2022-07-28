@@ -1,4 +1,4 @@
-package Aula06;
+package aula06;
 
 public class Combate {
     public static void main(String[] args) {
