@@ -100,7 +100,7 @@ public class Lutador {
         this.setCategoria();
     }
 
-    private String getCategoria() {
+    public String getCategoria() {
         if (this.peso < 52.2) {
             this.categoria = "Inválido";
         } else if (this.peso <= 70.3) {

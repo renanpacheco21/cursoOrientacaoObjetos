@@ -1,30 +1,63 @@
 package aula06;
+import java.util.Random;
 
 public class Luta {
 
     //Atributos
     private Lutador desafiado;
-    private Lutador desafiando;
+    private Lutador desafiante;
     private int round;
     private boolean aprovada;
 
     //Métodos Públicos
-    public void marcarLuta(){
-
+    public void marcarLuta(Lutador l1, Lutador l2){
+        if (l1.getCategoria().equals(l2.getCategoria())
+            && l1 != l2) {
+            this.aprovada = true;
+            this.desafiado = l1;
+            this.desafiante = l2;
+        } else {
+            this.aprovada = false;
+            this.desafiado = null;
+            this.desafiante = null;
+        }
     }
 
     public void lutar(){
+        if (this.aprovada){
+            System.out.println("*** Lutador Desafiado ****");
+            this.desafiado.apresentar();
+            System.out.println("*** Lutador Desafiante ****");
+            this.desafiante.apresentar();
 
+            Random aleatorio = new Random();
+            int vencedor = aleatorio.nextInt(3);
+
+            System.out.println("\n*** RESULTADO DA LUTA ***");
+            switch (vencedor){
+                case 0:
+                    System.out.println("A Luta empatou");
+                    this.desafiado.empatarLuta();
+                    this.desafiante.empatarLuta();
+                    break;
+                case 1:
+                    System.out.println("Vencedor: " + this.desafiado.getNome());
+                    this.desafiado.ganharLuta();
+                    this.desafiante.perderLuta();
+                    break;
+                case 2:
+                    System.out.println("Vencedor: " + this.desafiante.getNome());
+                    this.desafiado.perderLuta();
+                    this.desafiante.ganharLuta();
+                    break;
+            }
+            System.out.println("*************************");
+        } else {
+            System.out.println("A luta não poderá ser realizada!");
+        }
     }
 
     //Métodos Especiais
-    public Luta(Lutador desafiado, Lutador desafiando, int round, boolean aprovada) {
-        this.desafiado = desafiado;
-        this.desafiando = desafiando;
-        this.round = round;
-        this.aprovada = aprovada;
-    }
-
     public Lutador getDesafiado() {
         return desafiado;
     }
@@ -33,12 +66,12 @@ public class Luta {
         this.desafiado = desafiado;
     }
 
-    public Lutador getDesafiando() {
-        return desafiando;
+    public Lutador getDesafiante() {
+        return desafiante;
     }
 
-    public void setDesafiando(Lutador desafiando) {
-        this.desafiando = desafiando;
+    public void setDesafiante(Lutador desafiante) {
+        this.desafiante = desafiante;
     }
 
     public int getRound() {
